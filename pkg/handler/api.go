@@ -8,8 +8,8 @@ func newApiHandler(h *Handler) http.Handler {
 	mux.HandleFunc("GET /actors", h.userIdentity(h.getAllActors))
 	mux.HandleFunc("GET /actors/", h.userIdentity(h.getAllActors))
 
-	mux.HandleFunc("POST /actors", h.userIdentity(h.createActor))
-	mux.HandleFunc("POST /actors/", h.userIdentity(h.createActor))
+	mux.HandleFunc("POST /actors", h.adminIdentity(h.createActor))
+	mux.HandleFunc("POST /actors/", h.adminIdentity(h.createActor))
 
 	return mux
 }
