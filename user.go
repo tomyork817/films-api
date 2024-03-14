@@ -8,7 +8,7 @@ const (
 )
 
 type User struct {
-	Id       int      `json:"-"`
+	Id       int      `json:"-" db:"id"`
 	Name     string   `json:"username"`
 	Role     UserRole `json:"role"`
 	Password string   `json:"password"`

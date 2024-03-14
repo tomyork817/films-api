@@ -23,13 +23,9 @@ func newErrorResponse(w http.ResponseWriter, statusCode int, message string) {
 	w.Write(jsonResponse)
 }
 
-func newOkResponse(w http.ResponseWriter, id int) {
+func newOkResponse(w http.ResponseWriter, response map[string]interface{}) {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
-
-	response := map[string]interface{}{
-		"id": id,
-	}
 
 	json.NewEncoder(w).Encode(response)
 }

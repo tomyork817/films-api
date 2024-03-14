@@ -7,6 +7,8 @@ import (
 
 type Authorization interface {
 	CreateUser(user vkfilms.User) (int, error)
+	GenerateToken(username, password string) (string, error)
+	ParseToken(token string) (int, error)
 }
 
 type Actor interface {

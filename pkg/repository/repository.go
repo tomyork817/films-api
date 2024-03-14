@@ -7,6 +7,7 @@ import (
 
 type Authorization interface {
 	CreateUser(user vkfilms.User) (int, error)
+	GetUser(username, password string) (vkfilms.User, error)
 }
 
 type Actor interface {
