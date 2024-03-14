@@ -1,8 +1,12 @@
 package service
 
-import "github.com/bitbox228/vk-films-api/pkg/repository"
+import (
+	vkfilms "github.com/bitbox228/vk-films-api"
+	"github.com/bitbox228/vk-films-api/pkg/repository"
+)
 
 type Authorization interface {
+	CreateUser(user vkfilms.User) (int, error)
 }
 
 type Actor interface {
@@ -18,5 +22,7 @@ type Service struct {
 }
 
 func NewService(repos *repository.Repository) *Service {
-	return &Service{}
+	return &Service{
+		Authorization: NewAuthService(repos.Authorization),
+	}
 }

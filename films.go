@@ -19,8 +19,8 @@ type FilmsActors struct {
 type Sex string
 
 const (
-	FEMALE Sex = "FEMALE"
-	MALE   Sex = "MALE"
+	FEMALE Sex = "female"
+	MALE   Sex = "male"
 )
 
 type Actor struct {
