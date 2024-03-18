@@ -135,6 +135,7 @@ func (h *Handler) deleteFilm(w http.ResponseWriter, r *http.Request) {
 // @ID update-film
 // @Accept  json
 // @Produce  json
+// @Param id query integer true "film id"
 // @Param input body vk_films.UpdateFilmInput true "film updated info"
 // @Success 200 {integer} integer 1
 // @Failure 400,404 {object} errorResponse

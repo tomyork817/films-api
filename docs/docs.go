@@ -161,7 +161,7 @@ const docTemplate = `{
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/vk_films.Actor"
+                            "$ref": "#/definitions/vk_films.CreateActorInput"
                         }
                     }
                 ],
@@ -330,6 +330,13 @@ const docTemplate = `{
                 "summary": "UpdateFilm",
                 "operationId": "update-film",
                 "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "film id",
+                        "name": "id",
+                        "in": "query",
+                        "required": true
+                    },
                     {
                         "description": "film updated info",
                         "name": "input",
@@ -759,14 +766,11 @@ const docTemplate = `{
                 }
             }
         },
-        "vk_films.Actor": {
+        "vk_films.CreateActorInput": {
             "type": "object",
             "properties": {
                 "birthday": {
                     "type": "string"
-                },
-                "id": {
-                    "type": "integer"
                 },
                 "name": {
                     "type": "string"

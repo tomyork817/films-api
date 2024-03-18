@@ -5,12 +5,10 @@ definitions:
       message:
         type: string
     type: object
-  vk_films.Actor:
+  vk_films.CreateActorInput:
     properties:
       birthday:
         type: string
-      id:
-        type: integer
       name:
         type: string
       sex:
@@ -182,7 +180,7 @@ paths:
         name: input
         required: true
         schema:
-          $ref: '#/definitions/vk_films.Actor'
+          $ref: '#/definitions/vk_films.CreateActorInput'
       produces:
       - application/json
       responses:
@@ -375,6 +373,11 @@ paths:
       description: update film
       operationId: update-film
       parameters:
+      - description: film id
+        in: query
+        name: id
+        required: true
+        type: integer
       - description: film updated info
         in: body
         name: input

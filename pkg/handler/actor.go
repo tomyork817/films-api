@@ -38,7 +38,7 @@ func (h *Handler) getAllActors(w http.ResponseWriter, r *http.Request) {
 // @ID create-actor
 // @Accept  json
 // @Produce  json
-// @Param input body vk_films.Actor true "actor info"
+// @Param input body vk_films.CreateActorInput true "actor info"
 // @Success 200 {integer} integer 1
 // @Failure 400,404 {object} errorResponse
 // @Failure 500 {object} errorResponse
