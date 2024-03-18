@@ -62,7 +62,7 @@ func main() {
 		}
 	}()
 
-	logrus.Print("application started")
+	logrus.Print("application started, swagger is available on http://localhost:8000/swagger/index.html")
 
 	quit := make(chan os.Signal, 1)
 	signal.Notify(quit, syscall.SIGTERM, syscall.SIGINT)
