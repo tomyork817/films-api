@@ -10,10 +10,22 @@ import (
 	_ "github.com/lib/pq"
 	"github.com/sirupsen/logrus"
 	"github.com/spf13/viper"
+	_ "github.com/swaggo/http-swagger"
 	"os"
 	"os/signal"
 	"syscall"
 )
+
+// @title VK Films API
+// @version 1.0
+// @description API Server for Films Application
+
+// @host localhost:8000
+// @BasePath /
+
+// @securityDefinitions.apikey ApiKeyAuth
+// @in header
+// @name Authorization
 
 func main() {
 	logrus.SetFormatter(new(logrus.JSONFormatter))

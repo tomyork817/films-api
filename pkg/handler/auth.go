@@ -3,6 +3,7 @@ package handler
 import (
 	"encoding/json"
 	"github.com/bitbox228/vk-films-api"
+	_ "github.com/swaggo/http-swagger"
 	"net/http"
 )
 

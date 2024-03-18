@@ -1,6 +1,9 @@
 package handler
 
-import "net/http"
+import (
+	_ "github.com/swaggo/http-swagger"
+	"net/http"
+)
 
 func newApiHandler(h *Handler) http.Handler {
 	mux := http.NewServeMux()
