@@ -1,7 +1,7 @@
 build:
 	docker-compose build vk-films-api
 
-run:
+run: build
 	docker-compose up vk-films-api
 
 test:
