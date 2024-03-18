@@ -6,7 +6,6 @@ import (
 	"github.com/bitbox228/vk-films-api/pkg/handler"
 	"github.com/bitbox228/vk-films-api/pkg/repository"
 	"github.com/bitbox228/vk-films-api/pkg/service"
-	"github.com/joho/godotenv"
 	_ "github.com/lib/pq"
 	"github.com/sirupsen/logrus"
 	"github.com/spf13/viper"
@@ -32,10 +31,6 @@ func main() {
 
 	if err := initConfig(); err != nil {
 		logrus.Fatalf("error occured while initialization configs: %s", err.Error())
-	}
-
-	if err := godotenv.Load(); err != nil {
-		logrus.Fatalf("error occured while loading env vars: %s", err.Error())
 	}
 
 	db, err := repository.NewPostgresDB(repository.Config{
