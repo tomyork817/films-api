@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  vk-films-api:
+    build: ./
+    command: ./wait-for-postgres.sh films-db ./vk-films-api
+    ports:
+      - "8000:8000"
+    depends_on:
+      - films-db
+    environment:
+      - DB_PASSWORD=qwerty
+
+
+  films-db:
+    restart: always
+    image: postgres:latest
+    volumes:
+      - ./.database/postgres/data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_PASSWORD=qwerty
+    ports:
+      - "5434:5432"
