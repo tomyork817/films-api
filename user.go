@@ -29,3 +29,8 @@ func (u User) ValidateSignUp() error {
 	}
 	return nil
 }
+
+type SignInUserInput struct {
+	Name     string `json:"username"`
+	Password string `json:"password"`
+}

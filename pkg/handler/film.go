@@ -7,6 +7,20 @@ import (
 	"strconv"
 )
 
+// @Summary GetAllFilmsSorted
+// @Security ApiKeyAuth
+// @Tags films
+// @Description get all films sorted
+// @ID get-all-films-sorted
+// @Accept  json
+// @Produce  json
+// @Param type path string false "type of sort (by rating/name/date)"
+// @Param order path string false "order sort (asc/desc)"
+// @Success 200 {integer} integer 1
+// @Failure 400,404 {object} errorResponse
+// @Failure 500 {object} errorResponse
+// @Failure default {object} errorResponse
+// @Router /api/films/sort [get]
 func (h *Handler) getAllFilmsSorted(w http.ResponseWriter, r *http.Request) {
 	var sort vkfilms.Sort
 	sort.Type = vkfilms.SortType(r.URL.Query().Get("type"))
@@ -21,6 +35,18 @@ func (h *Handler) getAllFilmsSorted(w http.ResponseWriter, r *http.Request) {
 	newOkResponseJson(w, films)
 }
 
+// @Summary GetAllFilmsSorted
+// @Security ApiKeyAuth
+// @Tags films
+// @Description get all films
+// @ID get-all-films
+// @Accept  json
+// @Produce  json
+// @Success 200 {integer} integer 1
+// @Failure 400,404 {object} errorResponse
+// @Failure 500 {object} errorResponse
+// @Failure default {object} errorResponse
+// @Router /api/films [get]
 func (h *Handler) getAllFilms(w http.ResponseWriter, r *http.Request) {
 	var sort vkfilms.Sort
 
@@ -33,6 +59,19 @@ func (h *Handler) getAllFilms(w http.ResponseWriter, r *http.Request) {
 	newOkResponseJson(w, films)
 }
 
+// @Summary CreateFilm
+// @Security ApiKeyAuth
+// @Tags films
+// @Description create film
+// @ID create-film
+// @Accept  json
+// @Produce  json
+// @Param input body vk_films.CreateFilmInput true "film info"
+// @Success 200 {integer} integer 1
+// @Failure 400,404 {object} errorResponse
+// @Failure 500 {object} errorResponse
+// @Failure default {object} errorResponse
+// @Router /api/films [post]
 func (h *Handler) createFilm(w http.ResponseWriter, r *http.Request) {
 	var input vkfilms.CreateFilmInput
 
@@ -52,6 +91,19 @@ func (h *Handler) createFilm(w http.ResponseWriter, r *http.Request) {
 	})
 }
 
+// @Summary DeleteFilm
+// @Security ApiKeyAuth
+// @Tags films
+// @Description delete film
+// @ID delete-film
+// @Accept  json
+// @Produce  json
+// @Param id path integer true "film id"
+// @Success 200 {integer} integer 1
+// @Failure 400,404 {object} errorResponse
+// @Failure 500 {object} errorResponse
+// @Failure default {object} errorResponse
+// @Router /api/films [delete]
 func (h *Handler) deleteFilm(w http.ResponseWriter, r *http.Request) {
 	id, err := strconv.Atoi(r.URL.Query().Get("id"))
 	if err != nil {
@@ -70,6 +122,19 @@ func (h *Handler) deleteFilm(w http.ResponseWriter, r *http.Request) {
 	})
 }
 
+// @Summary UpdateFilm
+// @Security ApiKeyAuth
+// @Tags films
+// @Description update film
+// @ID update-film
+// @Accept  json
+// @Produce  json
+// @Param input body vk_films.UpdateFilmInput true "film updated info"
+// @Success 200 {integer} integer 1
+// @Failure 400,404 {object} errorResponse
+// @Failure 500 {object} errorResponse
+// @Failure default {object} errorResponse
+// @Router /api/films [put]
 func (h *Handler) updateFilm(w http.ResponseWriter, r *http.Request) {
 	id, err := strconv.Atoi(r.URL.Query().Get("id"))
 	if err != nil {
@@ -93,6 +158,20 @@ func (h *Handler) updateFilm(w http.ResponseWriter, r *http.Request) {
 	})
 }
 
+// @Summary SearchFilms
+// @Security ApiKeyAuth
+// @Tags films
+// @Description search films by film/actor name
+// @ID search-films
+// @Accept  json
+// @Produce  json
+// @Param fragment path string true "fragment to search"
+// @Param type path string false "search by (film/actor)"
+// @Success 200 {integer} integer 1
+// @Failure 400,404 {object} errorResponse
+// @Failure 500 {object} errorResponse
+// @Failure default {object} errorResponse
+// @Router /api/films/search [get]
 func (h *Handler) searchFilms(w http.ResponseWriter, r *http.Request) {
 	var search vkfilms.Search
 	search.Type = vkfilms.SearchType(r.URL.Query().Get("type"))
