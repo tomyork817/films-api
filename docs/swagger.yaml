@@ -106,7 +106,7 @@ paths:
       operationId: delete-actor
       parameters:
       - description: actor id
-        in: path
+        in: query
         name: id
         required: true
         type: integer
@@ -218,7 +218,7 @@ paths:
       operationId: update-actor
       parameters:
       - description: actor id
-        in: path
+        in: query
         name: id
         required: true
         type: integer
@@ -264,7 +264,7 @@ paths:
       operationId: delete-film
       parameters:
       - description: film id
-        in: path
+        in: query
         name: id
         required: true
         type: integer
@@ -417,12 +417,12 @@ paths:
       operationId: search-films
       parameters:
       - description: fragment to search
-        in: path
+        in: query
         name: fragment
         required: true
         type: string
       - description: search by (film/actor)
-        in: path
+        in: query
         name: type
         type: string
       produces:
@@ -461,11 +461,11 @@ paths:
       operationId: get-all-films-sorted
       parameters:
       - description: type of sort (by rating/name/date)
-        in: path
+        in: query
         name: type
         type: string
       - description: order sort (asc/desc)
-        in: path
+        in: query
         name: order
         type: string
       produces:

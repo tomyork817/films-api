@@ -16,14 +16,14 @@ type User struct {
 	Password string   `json:"password"`
 }
 
-func (u User) ValidateSignIn() error {
+func (u User) ValidateSignUp() error {
 	if u.Name == "" || u.Password == "" || (u.Role != ADMIN && u.Role != USER) {
 		return errors.New("not all required fields are filled in")
 	}
 	return nil
 }
 
-func (u User) ValidateSignUp() error {
+func (u User) ValidateSignIn() error {
 	if u.Name == "" || u.Password == "" {
 		return errors.New("not all required fields are filled in")
 	}

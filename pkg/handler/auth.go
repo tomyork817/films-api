@@ -40,8 +40,8 @@ func (h *Handler) signUp(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	if input.Name == "" || input.Password == "" || (input.Role != vk_films.ADMIN && input.Role != vk_films.USER) {
-		newErrorResponse(w, http.StatusBadRequest, "not all required fields are filled in")
+	if err := input.ValidateSignUp(); err != nil {
+		newErrorResponse(w, http.StatusBadRequest, err.Error())
 		return
 	}
 
@@ -80,6 +80,7 @@ func (h *Handler) signIn(w http.ResponseWriter, r *http.Request) {
 
 	if err := input.ValidateSignIn(); err != nil {
 		newErrorResponse(w, http.StatusBadRequest, err.Error())
+		return
 	}
 
 	token, err := h.services.Authorization.GenerateToken(input.Name, input.Password)

@@ -14,8 +14,8 @@ import (
 // @ID get-all-films-sorted
 // @Accept  json
 // @Produce  json
-// @Param type path string false "type of sort (by rating/name/date)"
-// @Param order path string false "order sort (asc/desc)"
+// @Param type query string false "type of sort (by rating/name/date)"
+// @Param order query string false "order sort (asc/desc)"
 // @Success 200 {integer} integer 1
 // @Failure 400,404 {object} errorResponse
 // @Failure 500 {object} errorResponse
@@ -102,7 +102,7 @@ func (h *Handler) createFilm(w http.ResponseWriter, r *http.Request) {
 // @ID delete-film
 // @Accept  json
 // @Produce  json
-// @Param id path integer true "film id"
+// @Param id query integer true "film id"
 // @Success 200 {integer} integer 1
 // @Failure 400,404 {object} errorResponse
 // @Failure 500 {object} errorResponse
@@ -173,8 +173,8 @@ func (h *Handler) updateFilm(w http.ResponseWriter, r *http.Request) {
 // @ID search-films
 // @Accept  json
 // @Produce  json
-// @Param fragment path string true "fragment to search"
-// @Param type path string false "search by (film/actor)"
+// @Param fragment query string true "fragment to search"
+// @Param type query string false "search by (film/actor)"
 // @Success 200 {integer} integer 1
 // @Failure 400,404 {object} errorResponse
 // @Failure 500 {object} errorResponse

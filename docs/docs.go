@@ -90,7 +90,7 @@ const docTemplate = `{
                         "type": "integer",
                         "description": "actor id",
                         "name": "id",
-                        "in": "path",
+                        "in": "query",
                         "required": true
                     },
                     {
@@ -221,7 +221,7 @@ const docTemplate = `{
                         "type": "integer",
                         "description": "actor id",
                         "name": "id",
-                        "in": "path",
+                        "in": "query",
                         "required": true
                     }
                 ],
@@ -458,7 +458,7 @@ const docTemplate = `{
                         "type": "integer",
                         "description": "film id",
                         "name": "id",
-                        "in": "path",
+                        "in": "query",
                         "required": true
                     }
                 ],
@@ -520,14 +520,14 @@ const docTemplate = `{
                         "type": "string",
                         "description": "fragment to search",
                         "name": "fragment",
-                        "in": "path",
+                        "in": "query",
                         "required": true
                     },
                     {
                         "type": "string",
                         "description": "search by (film/actor)",
                         "name": "type",
-                        "in": "path"
+                        "in": "query"
                     }
                 ],
                 "responses": {
@@ -588,13 +588,13 @@ const docTemplate = `{
                         "type": "string",
                         "description": "type of sort (by rating/name/date)",
                         "name": "type",
-                        "in": "path"
+                        "in": "query"
                     },
                     {
                         "type": "string",
                         "description": "order sort (asc/desc)",
                         "name": "order",
-                        "in": "path"
+                        "in": "query"
                     }
                 ],
                 "responses": {

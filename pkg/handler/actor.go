@@ -71,7 +71,7 @@ func (h *Handler) createActor(w http.ResponseWriter, r *http.Request) {
 // @ID delete-actor
 // @Accept  json
 // @Produce  json
-// @Param id path integer true "actor id"
+// @Param id query integer true "actor id"
 // @Success 200 {integer} integer 1
 // @Failure 400,404 {object} errorResponse
 // @Failure 500 {object} errorResponse
@@ -104,7 +104,7 @@ func (h *Handler) deleteActor(w http.ResponseWriter, r *http.Request) {
 // @ID update-actor
 // @Accept  json
 // @Produce  json
-// @Param id path integer true "actor id"
+// @Param id query integer true "actor id"
 // @Param input body vk_films.UpdateActorInput true "actor updated info"
 // @Success 200 {integer} integer 1
 // @Failure 400,404 {object} errorResponse
