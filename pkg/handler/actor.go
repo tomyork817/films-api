@@ -20,6 +20,8 @@ import (
 // @Failure default {object} errorResponse
 // @Router /api/actors [get]
 func (h *Handler) getAllActors(w http.ResponseWriter, r *http.Request) {
+	LogRequest(r)
+
 	actors, err := h.services.Actor.GetAll()
 	if err != nil {
 		newErrorResponse(w, http.StatusInternalServerError, err.Error())
@@ -44,6 +46,7 @@ func (h *Handler) getAllActors(w http.ResponseWriter, r *http.Request) {
 // @Router /api/actors [post]
 func (h *Handler) createActor(w http.ResponseWriter, r *http.Request) {
 	var input vkfilms.Actor
+	LogRequest(r)
 
 	if err := json.NewDecoder(r.Body).Decode(&input); err != nil {
 		newErrorResponse(w, http.StatusBadRequest, err.Error())
@@ -75,6 +78,8 @@ func (h *Handler) createActor(w http.ResponseWriter, r *http.Request) {
 // @Failure default {object} errorResponse
 // @Router /api/actors [delete]
 func (h *Handler) deleteActor(w http.ResponseWriter, r *http.Request) {
+	LogRequest(r)
+
 	id, err := strconv.Atoi(r.URL.Query().Get("id"))
 	if err != nil {
 		newErrorResponse(w, http.StatusBadRequest, "invalid id")
@@ -107,6 +112,8 @@ func (h *Handler) deleteActor(w http.ResponseWriter, r *http.Request) {
 // @Failure default {object} errorResponse
 // @Router /api/actors [put]
 func (h *Handler) updateActor(w http.ResponseWriter, r *http.Request) {
+	LogRequest(r)
+
 	id, err := strconv.Atoi(r.URL.Query().Get("id"))
 	if err != nil {
 		newErrorResponse(w, http.StatusBadRequest, "invalid id")

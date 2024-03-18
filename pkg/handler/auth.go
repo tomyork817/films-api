@@ -33,6 +33,7 @@ func newAuthHandler(h *Handler) http.Handler {
 // @Router /auth/sign-up [post]
 func (h *Handler) signUp(w http.ResponseWriter, r *http.Request) {
 	var input vk_films.User
+	LogRequest(r)
 
 	if err := json.NewDecoder(r.Body).Decode(&input); err != nil {
 		newErrorResponse(w, http.StatusBadRequest, err.Error())
@@ -70,6 +71,7 @@ func (h *Handler) signUp(w http.ResponseWriter, r *http.Request) {
 // @Router /auth/sign-in [post]
 func (h *Handler) signIn(w http.ResponseWriter, r *http.Request) {
 	var input vk_films.User
+	LogRequest(r)
 
 	if err := json.NewDecoder(r.Body).Decode(&input); err != nil {
 		newErrorResponse(w, http.StatusBadRequest, err.Error())

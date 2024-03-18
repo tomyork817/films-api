@@ -23,6 +23,8 @@ import (
 // @Router /api/films/sort [get]
 func (h *Handler) getAllFilmsSorted(w http.ResponseWriter, r *http.Request) {
 	var sort vkfilms.Sort
+	LogRequest(r)
+
 	sort.Type = vkfilms.SortType(r.URL.Query().Get("type"))
 	sort.Order = vkfilms.SortOrder(r.URL.Query().Get("order"))
 
@@ -49,6 +51,7 @@ func (h *Handler) getAllFilmsSorted(w http.ResponseWriter, r *http.Request) {
 // @Router /api/films [get]
 func (h *Handler) getAllFilms(w http.ResponseWriter, r *http.Request) {
 	var sort vkfilms.Sort
+	LogRequest(r)
 
 	films, err := h.services.Film.GetAllSorted(sort)
 	if err != nil {
@@ -74,6 +77,7 @@ func (h *Handler) getAllFilms(w http.ResponseWriter, r *http.Request) {
 // @Router /api/films [post]
 func (h *Handler) createFilm(w http.ResponseWriter, r *http.Request) {
 	var input vkfilms.CreateFilmInput
+	LogRequest(r)
 
 	if err := json.NewDecoder(r.Body).Decode(&input); err != nil {
 		newErrorResponse(w, http.StatusBadRequest, err.Error())
@@ -105,6 +109,8 @@ func (h *Handler) createFilm(w http.ResponseWriter, r *http.Request) {
 // @Failure default {object} errorResponse
 // @Router /api/films [delete]
 func (h *Handler) deleteFilm(w http.ResponseWriter, r *http.Request) {
+	LogRequest(r)
+
 	id, err := strconv.Atoi(r.URL.Query().Get("id"))
 	if err != nil {
 		newErrorResponse(w, http.StatusBadRequest, "invalid id")
@@ -136,6 +142,8 @@ func (h *Handler) deleteFilm(w http.ResponseWriter, r *http.Request) {
 // @Failure default {object} errorResponse
 // @Router /api/films [put]
 func (h *Handler) updateFilm(w http.ResponseWriter, r *http.Request) {
+	LogRequest(r)
+
 	id, err := strconv.Atoi(r.URL.Query().Get("id"))
 	if err != nil {
 		newErrorResponse(w, http.StatusBadRequest, "invalid id")
@@ -173,6 +181,8 @@ func (h *Handler) updateFilm(w http.ResponseWriter, r *http.Request) {
 // @Failure default {object} errorResponse
 // @Router /api/films/search [get]
 func (h *Handler) searchFilms(w http.ResponseWriter, r *http.Request) {
+	LogRequest(r)
+
 	var search vkfilms.Search
 	search.Type = vkfilms.SearchType(r.URL.Query().Get("type"))
 	search.Fragment = r.URL.Query().Get("fragment")
