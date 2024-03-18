@@ -51,9 +51,8 @@ func (h *Handler) signIn(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	if input.Name == "" || input.Password == "" {
-		newErrorResponse(w, http.StatusBadRequest, "not all required fields are filled in")
-		return
+	if err := input.ValidateSignIn(); err != nil {
+		newErrorResponse(w, http.StatusBadRequest, err.Error())
 	}
 
 	token, err := h.services.Authorization.GenerateToken(input.Name, input.Password)

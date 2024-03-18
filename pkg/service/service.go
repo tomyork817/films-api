@@ -5,6 +5,8 @@ import (
 	"github.com/bitbox228/vk-films-api/pkg/repository"
 )
 
+//go:generate mockgen -source=service.go -destination=mocks/mock.go
+
 type Authorization interface {
 	CreateUser(user vkfilms.User) (int, error)
 	GenerateToken(username, password string) (string, error)

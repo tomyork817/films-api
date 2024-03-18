@@ -7,6 +7,10 @@ run: build
 test:
 	go test -v ./...
 
+test-cover:
+	go test -v ./... -cover
+
+
 migrate:
 	migrate -path ./schema -database 'postgres://postgres:qwerty@0.0.0.0:5434/postgres?sslmode=disable' up
 

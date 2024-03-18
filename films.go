@@ -6,10 +6,6 @@ import (
 	"time"
 )
 
-const (
-	dateLayout = "2006-01-02"
-)
-
 type Film struct {
 	Id          int      `json:"id" db:"id"`
 	Name        string   `json:"name" db:"name"`
@@ -119,7 +115,7 @@ type GetActorOutput struct {
 
 func (j *JsonDate) UnmarshalJSON(b []byte) error {
 	s := strings.Trim(string(b), "\"")
-	t, err := time.Parse(dateLayout, s)
+	t, err := time.Parse(time.DateOnly, s)
 	if err != nil {
 		return err
 	}
@@ -128,12 +124,12 @@ func (j *JsonDate) UnmarshalJSON(b []byte) error {
 }
 
 func (j *JsonDate) MarshalJSON() ([]byte, error) {
-	return []byte("\"" + time.Time(*j).Format(dateLayout) + "\""), nil
+	return []byte("\"" + time.Time(*j).Format(time.DateOnly) + "\""), nil
 }
 
 func (j *JsonDate) Format() string {
 	t := time.Time(*j)
-	return t.Format(dateLayout)
+	return t.Format(time.DateOnly)
 }
 
 func (j *JsonDate) IsEmpty() bool {
