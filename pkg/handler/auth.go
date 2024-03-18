@@ -38,7 +38,8 @@ func (h *Handler) signUp(w http.ResponseWriter, r *http.Request) {
 	}
 
 	newOkResponse(w, map[string]interface{}{
-		"id": id,
+		"id":   id,
+		"role": input.Role,
 	})
 }
 

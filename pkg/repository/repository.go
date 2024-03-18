@@ -11,9 +11,18 @@ type Authorization interface {
 }
 
 type Actor interface {
+	Create(actor vkfilms.Actor) (int, error)
+	Delete(id int) error
+	Update(id int, input vkfilms.UpdateActorInput) error
+	GetAll() ([]vkfilms.GetActorOutput, error)
 }
 
 type Film interface {
+	Create(film vkfilms.CreateFilmInput) (int, error)
+	Delete(id int) error
+	Update(id int, input vkfilms.UpdateFilmInput) error
+	GetAllSorted(sort vkfilms.Sort) ([]vkfilms.Film, error)
+	GetSearch(search vkfilms.Search) ([]vkfilms.Film, error)
 }
 
 type Repository struct {
@@ -25,5 +34,7 @@ type Repository struct {
 func NewRepository(db *sqlx.DB) *Repository {
 	return &Repository{
 		Authorization: NewAuthPostgres(db),
+		Actor:         NewActorPostgres(db),
+		Film:          NewFilmPostgres(db),
 	}
 }

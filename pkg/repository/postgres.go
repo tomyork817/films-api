@@ -9,7 +9,7 @@ const (
 	usersTable       = "users"
 	actorsTable      = "actors"
 	filmsTable       = "films"
-	filmsActorsTable = "films_table"
+	filmsActorsTable = "films_actors"
 )
 
 type Config struct {

@@ -30,6 +30,7 @@ CREATE TABLE films
 CREATE TABLE films_actors
 (
     id       serial                                                          not null unique,
-    film_id  int references users (id) on delete cascade on update restrict  not null,
-    actor_id int references actors (id) on delete cascade on update restrict not null
+    film_id  int references films (id) on delete cascade on update restrict  not null,
+    actor_id int references actors (id) on delete cascade on update restrict not null,
+    unique (film_id, actor_id)
 );
