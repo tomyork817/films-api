@@ -1,4 +1,4 @@
-# vk-films-api
+# films-api
 
 REST API на Go, реализованное в рамках отбора на стажировку в VK.
 
