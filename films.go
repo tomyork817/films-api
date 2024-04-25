@@ -71,6 +71,12 @@ const (
 	MALE   Sex = "male"
 )
 
+type CreateActorInput struct {
+	Name     string   `json:"name"`
+	Birthday JsonDate `json:"birthday"`
+	Sex      Sex      `json:"sex"`
+}
+
 type Actor struct {
 	Id       int      `json:"id" db:"id"`
 	Name     string   `json:"name" db:"name"`
@@ -99,8 +105,11 @@ func (a UpdateActorInput) Validate() error {
 	if a.Name == nil && a.Sex == nil && a.Birthday == nil && a.FilmsId == nil {
 		return errors.New("no values to update")
 	}
-	if *a.Sex != MALE && *a.Sex != FEMALE || len(*a.Name) > 50 {
-		return errors.New("invalid values")
+	if a.Sex != nil && *a.Sex != MALE && *a.Sex != FEMALE {
+		return errors.New("invalid sex value")
+	}
+	if a.Name != nil && len(*a.Name) > 50 {
+		return errors.New("invalid name")
 	}
 	return nil
 }
